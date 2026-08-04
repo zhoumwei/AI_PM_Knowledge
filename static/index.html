@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 产品经理知识库 - 语音播放</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>AI 产品经理知识库 - 语音播放</h1>
+        <div class="subtitle">Edge-TTS 高质量中文语音 · 支持语音选择、语速调节、段落高亮、断点续播</div>
+    </header>
+
+    <div class="main">
+        <!-- 左侧文件列表 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>文档列表</h2>
+                <input type="text" class="search-box" id="searchBox" placeholder="搜索文件名...">
+            </div>
+            <div id="fileList"></div>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="content">
+            <!-- 播放控制栏 -->
+            <div class="player-bar">
+                <div class="player-meta">
+                    <div class="player-title" id="playerTitle">未选择文档</div>
+                    <div class="player-info" id="playerInfo"></div>
+                </div>
+                <div class="player-controls">
+                    <select class="voice-select" id="voiceSelect" title="选择语音"></select>
+                    <select class="speed-select" id="speedSelect" title="语速">
+                        <option value="-30%">慢速</option>
+                        <option value="-15%">较慢</option>
+                        <option value="+0%" selected>正常</option>
+                        <option value="+15%">较快</option>
+                        <option value="+30%">快速</option>
+                    </select>
+                    <button class="ctrl-btn" id="prevBtn" disabled title="上一段">
+                        <span>&#9198;</span>
+                    </button>
+                    <button class="ctrl-btn primary" id="playBtn" disabled title="播放当前文档">
+                        <span>&#9654;</span><span>播放</span>
+                    </button>
+                    <button class="ctrl-btn" id="pauseBtn" disabled title="暂停或继续">
+                        <span>&#10074;&#10074;</span><span>暂停</span>
+                    </button>
+                    <button class="ctrl-btn" id="nextBtn" disabled title="下一段">
+                        <span>&#9197;</span>
+                    </button>
+                    <button class="ctrl-btn danger" id="stopBtn" disabled>
+                        <span>&#9632;</span><span>停止</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 进度条 -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- 文档内容 -->
+            <div class="doc-viewer" id="docViewer">
+                <div class="doc-placeholder">
+                    <div class="icon">&#128218;</div>
+                    <div>请从左侧选择一个文档</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 预加载指示器 -->
+    <div class="preload-indicator" id="preloadIndicator">
+        <div class="spinner"></div>
+        <span>预加载中...</span>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
